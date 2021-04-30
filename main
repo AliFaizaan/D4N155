@@ -76,7 +76,7 @@ trap -- "printf \"\n$bug\";kill $! &> /dev/null;exit 2" "SIGINT"
 
 __compile(){
   go build -o modules/GoMutation modules/GoMutation.go && \
-  echo "$success Compiled GoMutation" || echo "$error Golang dont installed"
+	  echo "$success Compiled GoMutation" || echo -e "\033[31mGolang dont installed\033[0m" && exit 1
 }
 
 test -x "modules/GoMutation" || __compile
